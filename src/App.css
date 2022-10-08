@@ -13,8 +13,8 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
+.App-background {
+  background: url('./assets/background.png') center center no-repeat;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -22,6 +22,14 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.App-icon {
+  position: fixed;
+  left: 25px;
+  top: 20px;
+  width: 7%;
+  height: 7%;
 }
 
 .App-link {
