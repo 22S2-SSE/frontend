@@ -7,6 +7,7 @@ import SignUpForm from "./LoginPage/SignUpForm";
 
 function App() {
   const [ifDisplaySignInForm, setIfDisplaySignInForm] = useState(false)
+
   return (
     <div className="App">
       <div className="App-background">
@@ -14,7 +15,7 @@ function App() {
         {/* form */}
         <div className="bg-zinc-200 rounded-lg w-1/3 h-96 flex flex-col  justify-evenly items-center">
           {/* <SignInForm /> */}
-          {ifDisplaySignInForm ? <SignInForm /> : <SignUpForm/>}
+          {ifDisplaySignInForm ? <SignInForm onClickSignUp={() => setIfDisplaySignInForm(!ifDisplaySignInForm)}/> : <SignUpForm onClickBackButton={() => setIfDisplaySignInForm(!ifDisplaySignInForm)}/>}
         </div>
       </div>
     </div>

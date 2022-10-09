@@ -5,7 +5,7 @@ import Button from "@mui/material/Button";
 import SendIcon from "@mui/icons-material/Send";
 import TextField from "@mui/material/TextField";
 
-const SignInForm = () => {
+const SignInForm = ({onClickSignUp}) => {
   return <>
       <div
         className="text-3xl font-bold"
@@ -42,7 +42,7 @@ const SignInForm = () => {
         <Button variant="contained" endIcon={<SendIcon />}>
           Sign In
         </Button>
-        <div className="cursor-pointer text-blue-500 italic self-end font-semibold text-sm underline">
+        <div onClick={onClickSignUp} className="cursor-pointer text-blue-500 italic self-end font-semibold text-sm underline">
           Sign up
         </div>
       </div>
