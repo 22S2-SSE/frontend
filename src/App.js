@@ -1,23 +1,35 @@
-// import logo from './logo.svg';
-import "./App.css";
-import React, { useState } from 'react';
+import { Route, Routes } from "react-router-dom";
+import LoginPage from "./LoginPage";
+import NotFound from "./NotFound";
+import Profile from "./Profile";
+import Hotel from "./Hotel/index.jsx";
+import Dating from "./Dating/index";
+import IconTabs from "./IconTabs.jsx";
 import { ReactComponent as ReactLogo } from "./assets/Dating.svg";
-import SignInForm from "./LoginPage/SignInForm";
-import SignUpForm from "./LoginPage/SignUpForm";
-
+import { useLocation } from "react-router-dom";
 function App() {
-  const [ifDisplaySignInForm, setIfDisplaySignInForm] = useState(false)
-
+  const location = useLocation();
   return (
     <div className="App">
-      <div className="App-background">
-        <ReactLogo className="App-icon" />
-        {/* form */}
-        <div className="bg-zinc-200 rounded-lg w-1/3 h-96 flex flex-col  justify-evenly items-center">
-          {/* <SignInForm /> */}
-          {ifDisplaySignInForm ? <SignInForm onClickSignUp={() => setIfDisplaySignInForm(!ifDisplaySignInForm)}/> : <SignUpForm onClickBackButton={() => setIfDisplaySignInForm(!ifDisplaySignInForm)}/>}
-        </div>
-      </div>
+      <ReactLogo
+        style={{
+          position: "absolute",
+          left: "25px",
+          top: "20px",
+          width: "7%",
+          height: "7%",
+        }}
+      />
+      {location.pathname !== "/" ? <IconTabs /> : <></>}
+
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/profile/:id" element={<Profile />} />
+        <Route path="/hotel" element={<Hotel />} />
+        <Route path="/hotel/:id" element={<Hotel />} />
+        <Route path="/dating/:id" element={<Dating />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </div>
   );
 }

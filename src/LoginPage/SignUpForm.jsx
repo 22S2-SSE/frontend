@@ -8,9 +8,9 @@ const SignUpForm = ({onClickBackButton}) => {
         onClick={onClickBackButton}
         aria-label="delete"
         style={{
-          position: "absolute",
-          left: '520px',
-          top: '220px'
+          position: "relative",
+          left: '-220px',
+          top: '-20px'
         }}
       >
         <ArrowBackIcon />
