@@ -61,10 +61,11 @@ const DetailTabs = () => {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-      {(() => {
-            let td = [];
-            for (let i = 1; i <= 20; i++) {
-              td.push(<div
+        {(() => {
+          let td = [];
+          for (let i = 1; i <= 20; i++) {
+            td.push(
+              <div
                 className="flex justify-around font-semibold rounded-lg mt-2"
                 style={{
                   background: "rgb(202,182,166)",
@@ -72,11 +73,11 @@ const DetailTabs = () => {
               >
                 <div>Body Look</div>
                 <div>Attractive</div>
-              </div>);
-            }
-            return td;
-          })()}
-        
+              </div>
+            );
+          }
+          return td;
+        })()}
       </TabPanel>
       <TabPanel value={value} index={1}>
         Item Two
