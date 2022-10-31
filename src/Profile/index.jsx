@@ -23,7 +23,7 @@ const Profile = () => {
         >
         </div>
         <div
-          className=" w-full flex justify-around py-5"
+          className=" w-full flex justify-around py-3"
           style={{
             background: "rgb(240,222,204)",
             position: "relative",
@@ -47,7 +47,7 @@ const Profile = () => {
               </div>
             </div>
           </div>
-          <div>
+          <div className=" w-2/5">
             <p className="text-left font-bold text-2xl pl-1">More Detail</p>
             <DetailTabs />
           </div>

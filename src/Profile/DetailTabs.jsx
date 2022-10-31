@@ -4,6 +4,8 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+import profile from './profile.json'
+import preference from './preference.json'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -53,34 +55,50 @@ const DetailTabs = () => {
           onChange={handleChange}
           aria-label="basic tabs example"
         >
-          <Tab label="Item One" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
-          <Tab label="Item Four" {...a11yProps(3)} />
-          <Tab label="Item Five" {...a11yProps(4)} />
+          <Tab label="Detail" {...a11yProps(0)} />
+          <Tab label="Preference" {...a11yProps(1)} />
+            {/* <Tab label="Item Three" {...a11yProps(2)} />
+            <Tab label="Item Four" {...a11yProps(3)} />
+            <Tab label="Item Five" {...a11yProps(4)} /> */}
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
         {(() => {
           let td = [];
-          for (let i = 1; i <= 20; i++) {
+          for (const i in profile) {
             td.push(
               <div
-                className="flex justify-around font-semibold rounded-lg mt-2"
-                style={{
-                  background: "rgb(202,182,166)",
-                }}
-              >
-                <div>Body Look</div>
-                <div>Attractive</div>
-              </div>
-            );
+              className="flex justify-around font-semibold rounded-lg mt-2"
+              style={{
+                background: "rgb(202,182,166)",
+              }}
+            >
+              <div className=" text-left w-36">{i}</div>
+              <div className=" text-left w-36">{profile[i]}</div>
+            </div>
+            ) 
           }
           return td;
         })()}
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+      {(() => {
+          let td = [];
+          for (const i in preference) {
+            td.push(
+              <div
+              className="flex justify-around font-semibold rounded-lg mt-2"
+              style={{
+                background: "rgb(202,182,166)",
+              }}
+            >
+              <div className=" text-left w-36">{i}</div>
+              <div className=" text-left w-36">{profile[i]}</div>
+            </div>
+            ) 
+          }
+          return td;
+        })()}
       </TabPanel>
       <TabPanel value={value} index={2}>
         Item Three
