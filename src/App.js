@@ -7,6 +7,7 @@ import Dating from "./Dating/index";
 import IconTabs from "./IconTabs.jsx";
 import { ReactComponent as ReactLogo } from "./assets/Dating.svg";
 import { useLocation } from "react-router-dom";
+import axios from 'axios';
 function App() {
   const location = useLocation();
   return (
