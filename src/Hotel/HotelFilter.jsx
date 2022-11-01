@@ -6,10 +6,25 @@ import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined
 import Button from "@mui/material/Button";
 import SearchIcon from "@mui/icons-material/Search";
 const HotelFilter = () => {
-  const [age, setAge] = useState("");
+  const [age, setAge] = useState("Adelaide");
+  const [cost, setCost] = useState("200-499");
+  const [bookDate, setBookDate] = useState("10,Nov,2022");
 
-  const handleChange = (event) => {
-    setAge(event.target.value);
+  const handleChange = (event, filterItem) => {
+    switch (filterItem) {
+      case 'age':
+        setAge(event.target.value);
+        break;
+      case 'cost':
+        setCost(event.target.value);
+        break;
+      case 'bookDate':
+        setBookDate(event.target.value);
+        break;
+    
+      default:
+        break;
+    }
   };
 
   return (
@@ -19,31 +34,34 @@ const HotelFilter = () => {
       </p>
 
       <div className="flex justify-between ">
-        <div className="flex">
+        <div className="flex space-x-5">
           <div>
             <IconSelect
               age={age}
-              handleChange={handleChange}
+              handleChange={e => handleChange(e, "age")}
               iconComponent={<LocationOnOutlinedIcon />}
+              menuItems={["Adelaide", "Melbourne", "Sedny"]}
             />
           </div>
           <div className="ml-1">
             <IconSelect
-              age={age}
-              handleChange={handleChange}
+              age={cost}
+              handleChange={e => handleChange(e, "cost")}
               iconComponent={<AttachMoneyOutlinedIcon />}
+              menuItems={["0-199", "200-499", "500-2000"]}
             />
           </div>
           <div className="ml-1">
             <IconSelect
-              age={age}
-              handleChange={handleChange}
+              age={bookDate}
+              handleChange={e => handleChange(e, "bookDate")}
               iconComponent={<CalendarMonthOutlinedIcon />}
+              menuItems={["9,Nov,2022", "10,Nov,2022", "11,Nov,2022"]}
             />
           </div>
-          <div className="ml-1">
+          {/* <div className="ml-1">
             <IconSelect age={age} handleChange={handleChange} />
-          </div>
+          </div> */}
         </div>
         <Button variant="contained" endIcon={<SearchIcon />}>
           Send

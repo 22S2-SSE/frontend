@@ -1,5 +1,6 @@
 import Button from "@mui/material/Button";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
+import FormDialog from "./SelectDialog";
 
 const HotelItem = ({ hotelName, rs, description, location, hotelImage }) => {
   return (
@@ -11,7 +12,8 @@ const HotelItem = ({ hotelName, rs, description, location, hotelImage }) => {
           <p>{location}</p>
         </div>
         <div>
-          <Button variant="contained">Select</Button>
+          {/* <Button variant="contained">Select</Button> */}
+          <FormDialog />
         </div>
       </div>
       <div className=" border rounded-2xl bg-pink-100 px-3 py-1 w-2/3">
