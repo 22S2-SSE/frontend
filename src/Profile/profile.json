@@ -1,13 +1,13 @@
 {
-  "height": "167cm",
-  "weight": "54kg",
-  "nationality": "Australia",
+  "Height": "167cm",
+  "Weight": "54kg",
+  "Nationality": "Australia",
   "Living Place": "Australia",
-  "age": "21",
-  "vaccination": "3",
-  "hobby": "Music",
+  "Age": "21",
+  "Vaccination": "3",
+  "Hobby": "Music",
   "Social Media": "Twitter",
   "Hair Color": "Black",
   "Language": "English",
-  "constellation": "Scorpio"
+  "Constellation": "Scorpio"
 }
