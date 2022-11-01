@@ -17,7 +17,8 @@ const Profile = () => {
         <div
           className="w-full"
           style={{
-            background: `url(${profileBackground})`,
+            backgroundImage: `url(${profileBackground})`,
+            backgroundSize: "cover",
             minHeight: "25vh",
           }}
         >

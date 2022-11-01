@@ -25,7 +25,8 @@ const Hotel = () => {
       <div
         className="w-full"
         style={{
-          background: `url(${hotelBackground})`,
+          backgroundImage: `url(${hotelBackground})`,
+          backgroundSize: "cover",
           minHeight: "25vh",
         }}
       ></div>
