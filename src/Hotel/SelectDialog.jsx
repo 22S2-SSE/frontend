@@ -6,9 +6,21 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import BasicDatePicker from './BasicDatePicker';
+import { useNavigate } from "react-router-dom";
 
 export default function FormDialog() {
   const [open, setOpen] = React.useState(false);
+
+  const [fee, setFee] = React.useState(0);
+  const [days, setDays] = React.useState(0);
+
+  const navigate = useNavigate();
+
+
+  React.useEffect(() => {
+    setFee(days * 229.5)
+  }, [days])
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -17,6 +29,11 @@ export default function FormDialog() {
   const handleClose = () => {
     setOpen(false);
   };
+  const handleConfirm = () => {
+    setOpen(false);
+    // alert("Order Succeed")
+    navigate(`/invoice`);
+  };
 
   return (
     <div>
@@ -24,14 +41,34 @@ export default function FormDialog() {
         Open form dialog
       </Button> */}
       <Button variant="contained" onClick={handleClickOpen}>Select</Button>
-      <Dialog open={open} onClose={handleClose}>
+      <Dialog open={open} onClose={handleClose} maxWidth={"xs"}>
         <DialogTitle>Subscribe</DialogTitle>
         <DialogContent>
           <DialogContentText>
             To subscribe to this website, please enter your email address here. We
             will send updates occasionally.
           </DialogContentText>
-          <TextField
+          
+          <div className=' mt-4'>
+          <BasicDatePicker fullWidth/>
+            
+          </div>
+          <div className=' mt-6'>
+          <TextField value={days} onChange={e => setDays(e.target.value)} type={"number"} label="Days" fullWidth/>
+            
+          </div>
+
+          <div className='mt-6 text-left'>
+            <span className=' font-bold text-xl mr-3'>
+            Total Fee:  
+            </span>
+            <span className=' text-xl'>
+            {fee} $
+
+            </span>
+          </div>
+
+          {/* <TextField
             autoFocus
             margin="dense"
             id="name"
@@ -39,11 +76,11 @@ export default function FormDialog() {
             type="email"
             fullWidth
             variant="standard"
-          />
+          /> */}
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Subscribe</Button>
+          <Button onClick={handleConfirm}>Confirm</Button>
         </DialogActions>
       </Dialog>
     </div>
