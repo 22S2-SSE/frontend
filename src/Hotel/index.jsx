@@ -1,19 +1,42 @@
 import hotelBackground from "../assets/hotelBackground.png";
 import HotelFilter from "./HotelFilter.jsx";
 import HotelItem from "./HotelItem";
-import hotel1 from '../assets/hotel/1.png'
+import hotel1 from "../assets/hotel/1.png";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const Hotel = () => {
-  const description = `1266/14, W Club Rd, Race Course, Gopalapuram, Coimbatore, Set along a bustling road lined with shops and eateries, this unpretentious budget hotel is 1 km from Coimbatore International Airport and 10 km from the city centre.`
-  const rs = 4000
-  const hotelName = '1 room | 1 Night'
-  const location = 'Adelaide'
-  const hotelImage = <img src={hotel1} alt="" style={{
-    width: '100%',
-    borderRadius: '5%'
-    // height: '200px'
-  }}/>
-  
+  const [hotelList, setHotelList] = useState([]);
+
+  const renderHotelItems = () => {
+    let content = [];
+    for (const hotelItem of hotelList) {
+      content.push(
+        <HotelItem
+          description={hotelItem.email}
+          hotelName={hotelItem.title}
+          rs={hotelItem.score}
+          location={hotelItem.status}
+          hotelImage={hotelItem.detail}
+          ifVaccination={hotelItem.tele}
+        />
+      )
+    }
+    return content
+  };
+
+  useEffect(() => {
+    axios
+      .get(`http://124.221.119.113:8081/hotels/findAll`, {
+        headers: {
+          Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0dXNlcjEiLCJleHAiOjE2Njg2NjAxNTB9.y_OXE2mqEY4QiE-8wzohRCfN-xkGDpxYOs9WYJUefGJIUQlqf-5u4sZVd2bSoC0co_MbOv8WQ4LJwWkBlYfSvg`,
+        },
+      })
+      .then((res) => {
+        setHotelList(res.data);
+      });
+  }, []);
+
   return (
     <div
       style={{
@@ -32,12 +55,7 @@ const Hotel = () => {
       ></div>
       <HotelFilter />
       <div className=" grid grid-cols-2 gap-x-10 gap-y-10 px-40 mt-4">
-        <HotelItem description={description} hotelName={hotelName} rs={rs} location={location} hotelImage={hotelImage} />
-        <HotelItem description={description} hotelName={hotelName} rs={rs} location={location} hotelImage={hotelImage} />
-        <HotelItem description={description} hotelName={hotelName} rs={rs} location={location} hotelImage={hotelImage} />
-        <HotelItem description={description} hotelName={hotelName} rs={rs} location={location} hotelImage={hotelImage} />
-        <HotelItem description={description} hotelName={hotelName} rs={rs} location={location} hotelImage={hotelImage} />
-        <HotelItem description={description} hotelName={hotelName} rs={rs} location={location} hotelImage={hotelImage} />
+        {renderHotelItems()}
       </div>
     </div>
   );

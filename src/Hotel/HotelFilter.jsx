@@ -59,28 +59,10 @@ const HotelFilter = () => {
               menuItems={["9,Nov,2022", "10,Nov,2022", "11,Nov,2022"]}
             />
           </div>
-          {/* <div className="ml-1">
-            <IconSelect age={age} handleChange={handleChange} />
-          </div> */}
         </div>
         <Button variant="contained" endIcon={<SearchIcon />}>
-          Send
+          Search
         </Button>
-        {/* <div>
-            <FormControl fullWidth>
-              <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={age}
-                label="Age"
-                onChange={handleChange}
-              >
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
-              </Select>
-            </FormControl>
-          </div> */}
       </div>
     </div>
   );
