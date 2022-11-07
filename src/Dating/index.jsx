@@ -5,6 +5,8 @@ import b from "../assets/dating/girls/b.jpg";
 import d from "../assets/dating/girls/d.jpg";
 import c from "../assets/dating/girls/c.jpg";
 import e from "../assets/dating/girls/e.jpg";
+import g from "../assets/dating/girls/g.png"
+import h from "../assets/dating/girls/h.png"
 
 import profiles from "../Profile/profile.json";
 import profiles2 from "../Profile/profile2.json";
@@ -68,11 +70,16 @@ const Dating = () => {
             name={"Lilly"}
             message={"If I were a stop light, I’d turn"}
           />
+          <WaitingListItem
+            image={g}
+            name={"Jhony"}
+            message={"May I have your number?"}
+          />
           <WaitingListItem image={d} name={"Shreya"} message={"Hello"} />
           <WaitingListItem
-            image={e}
-            name={"Monika"}
-            message={"How about a movie and then…"}
+            image={h}
+            name={"Cirs"}
+            message={"Do you have plan this weekend?"}
           />
         </div>
 

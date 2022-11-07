@@ -38,7 +38,7 @@ export default function IconTabs() {
     },
     {
       icon: <GroupAddOutlinedIcon />,
-      label: "Match records",
+      label: "Dating Match",
       route: '/dating/aaabbbccc'
     },
     {
