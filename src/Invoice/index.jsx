@@ -7,8 +7,8 @@ const Invoice = () => {
     }}>
       <div className="bg-gray-100  w-full mx-auto px-80 py-20 mt-32">
         <div className=" text-left">
-          <p className=" text-xl">Your package has been delivered</p>
-          <p>Hi Yi Zhang,</p>
+          <p className=" text-xl">Your invoice has been generated</p>
+          <p>Hi testuser1,</p>
           <p>Your order from Dating APP been confirmed.</p>
         </div>
         <div className=" text-left mt-6">
