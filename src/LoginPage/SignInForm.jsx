@@ -8,26 +8,30 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 
-const SignInForm = ({onClickSignUp}) => {
-  const [emailAddress, setEmailAddress] = useState('')
-  const [password, setPassword] = useState('')
-  const navigate = useNavigate()
-  const submitLoginInformation = () => {
-    axios.post(`http://124.221.119.113:8081/tokens`, {
-      username: `${emailAddress}`,
-      password: `${password}`
-    }).then(res => {
-      // console.log(res.data)
-      
-      navigate(`/profile/${emailAddress}`)
-    }).catch(e => {
-      if (e.response.status === 500) {
-        alert('This user is not exist.')
-      }
-    })
-    
-  }
-  return <>
+const SignInForm = ({ onClickSignUp }) => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const submitLoginInformation = async () => {
+    try {
+      let {data} = await axios.post(`http://124.221.119.113:8081/tokens`, {
+        username: `${username}`,
+        password: `${password}`,
+      });
+      // console.log(data)
+      localStorage.setItem('token', `Bearer ${data}`)
+      let userID = await axios.get(`http://124.221.119.113:8081/users/me`, {
+        headers: {
+          "Authorization": "Bearer " + data
+        }
+      });
+      navigate(`/profile/${userID.data.id}`);
+    } catch (error) {
+      alert("This user is not exist.");
+    }
+  };
+  return (
+    <>
       <div
         className="text-3xl font-bold"
         style={{
@@ -39,7 +43,13 @@ const SignInForm = ({onClickSignUp}) => {
         User Login
       </div>
       <div>
-        <TextField id="filled-basic" label="Email Address" helperText="" variant="filled" onChange={(e) => setEmailAddress(e.target.value)} />
+        <TextField
+          id="filled-basic"
+          label="Username"
+          helperText=""
+          variant="filled"
+          onChange={(e) => setUsername(e.target.value)}
+        />
       </div>
       <div>
         <TextField
@@ -62,14 +72,22 @@ const SignInForm = ({onClickSignUp}) => {
       </div>
       <div className="flex justify-between space-x-6">
         {/* <Button variant="contained" endIcon={<SendIcon />} onClick={() => navigate('/profile/aaabbbccc')}> */}
-        <Button variant="contained" endIcon={<SendIcon />} onClick={() => submitLoginInformation()}>
+        <Button
+          variant="contained"
+          endIcon={<SendIcon />}
+          onClick={() => submitLoginInformation()}
+        >
           Sign In
         </Button>
-        <div onClick={onClickSignUp} className="cursor-pointer text-blue-500 italic self-end font-semibold text-sm underline">
+        <div
+          onClick={onClickSignUp}
+          className="cursor-pointer text-blue-500 italic self-end font-semibold text-sm underline"
+        >
           Sign up
         </div>
       </div>
-  </>
+    </>
+  );
 };
 
 export default SignInForm;
